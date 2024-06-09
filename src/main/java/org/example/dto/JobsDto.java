@@ -12,7 +12,7 @@ public class JobsDto {
     private double min_salary;
     private double max_salary;
     private ArrayList<LinkDto> links = new ArrayList<>();
-
+    private EmployeeDto jobId;
     public JobsDto() {
     }
 
