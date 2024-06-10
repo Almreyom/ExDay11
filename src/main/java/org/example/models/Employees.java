@@ -17,6 +17,9 @@ public class Employees {
     private int department_id;
     private Jobs job;
 
+    public Employees() {
+    }
+
     public Employees(ResultSet rs) throws SQLException {
         employeesId = rs.getInt("employee_id");
         firstName = rs.getString("first_name");

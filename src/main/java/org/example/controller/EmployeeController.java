@@ -7,11 +7,14 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.core.UriInfo;
 import org.example.dao.EmployeeDAO;
 import org.example.dao.JobsDAO;
 import org.example.dto.JobsDto;
 import org.example.models.Employees;
 
+
+import java.net.URI;
 import java.util.ArrayList;
 
 
@@ -19,6 +22,7 @@ import java.util.ArrayList;
 public class EmployeeController {
     EmployeeDAO dao = new EmployeeDAO();
     JobsDAO jdao= new JobsDAO();
+    private UriInfo uriInfo;
 
     public EmployeeController() {
     }
@@ -64,7 +68,15 @@ public class EmployeeController {
             throw new RuntimeException(e);
         }
     }
+    private void addLinks(JobsDto dto) {
+        URI selfUri = uriInfo.getAbsolutePath();
+        URI empsUri = uriInfo.getAbsolutePathBuilder()
+                .path(JobsController.class)
+                .build();
 
+        dto.addLink(selfUri.toString(), "self");
+        dto.addLink(empsUri.toString(), "employees");
+    }
     @PUT
     @Path("{employee_id}")
     public void UPDATE_JOB(@PathParam("employee_id") int employee_id, Employees employees) {
