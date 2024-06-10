@@ -1,7 +1,7 @@
 package org.example.services;
 
 
-import org.glassfish.jersey.process.internal.RequestScoped;
+import jakarta.enterprise.context.RequestScoped;
 
 @RequestScoped
 public class RequestService {

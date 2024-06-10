@@ -51,12 +51,12 @@ public class MyResource {
     }
 
 
-    @GET
-    @Path("{day}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getDate(@PathParam("day") LocalDate day) {
-        return "The date is: " + day;
-    }
+//    @GET
+//    @Path("{day}")
+//    @Produces(MediaType.TEXT_PLAIN)
+//    public String getDate(@PathParam("day") LocalDate day) {
+//        return "The date is: " + day;
+//    }
 
     @GET
     @Path("/employees/{empId}")
