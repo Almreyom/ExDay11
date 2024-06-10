@@ -2,8 +2,10 @@ package org.example.dto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmployeesDto {
+
     private int employee_id;
     private String first_name;
     private String last_name;
@@ -14,28 +16,37 @@ public class EmployeesDto {
     private double salary;
     private int manager_id;
     private int department_id;
-private JobsDto jobsDto;
+    private JobsDto jobId;
+    private ArrayList<LinkDto> links = new ArrayList<>();
 
-    public EmployeesDto() {
+    public JobsDto getJobId() {
+        return jobId;
     }
 
+    public void setJobId(JobsDto jobId) {
+        System.out.println(jobId);
+        this.jobId = jobId;
+    }
 
+    public ArrayList<LinkDto> getLinks() {
+        return links;
+    }
+
+    public void setLinks(ArrayList<LinkDto> links) {
+        this.links = links;
+    }
+
+    public EmployeesDto() {
+
+    }
 
     public EmployeesDto(ResultSet rs) throws SQLException {
-        this.employee_id = rs.getInt("employee_id");
-        this.first_name = rs.getString("first_name");
-        this.last_name = rs.getString("last_name");
-        this.email = rs.getString("email");
-        this.phone_number = rs.getString("phone_number");
-        this.hire_date = rs.getString("hire_date");
-        this.job_id = rs.getInt("job_id");
-        this.salary = rs.getDouble("salary");
-        this.manager_id = rs.getInt("manager_id");
-        this.department_id = rs.getInt("department_id");
+        job_id = rs.getInt("job_id");
+
     }
 
     public int getEmployee_id() {
-        return this.employee_id;
+        return employee_id;
     }
 
     public void setEmployee_id(int employee_id) {
@@ -43,7 +54,7 @@ private JobsDto jobsDto;
     }
 
     public String getFirst_name() {
-        return this.first_name;
+        return first_name;
     }
 
     public void setFirst_name(String first_name) {
@@ -51,7 +62,7 @@ private JobsDto jobsDto;
     }
 
     public String getLast_name() {
-        return this.last_name;
+        return last_name;
     }
 
     public void setLast_name(String last_name) {
@@ -59,7 +70,7 @@ private JobsDto jobsDto;
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(String email) {
@@ -67,7 +78,7 @@ private JobsDto jobsDto;
     }
 
     public String getPhone_number() {
-        return this.phone_number;
+        return phone_number;
     }
 
     public void setPhone_number(String phone_number) {
@@ -75,7 +86,7 @@ private JobsDto jobsDto;
     }
 
     public String getHire_date() {
-        return this.hire_date;
+        return hire_date;
     }
 
     public void setHire_date(String hire_date) {
@@ -83,7 +94,7 @@ private JobsDto jobsDto;
     }
 
     public int getJob_id() {
-        return this.job_id;
+        return job_id;
     }
 
     public void setJob_id(int job_id) {
@@ -91,7 +102,7 @@ private JobsDto jobsDto;
     }
 
     public double getSalary() {
-        return this.salary;
+        return salary;
     }
 
     public void setSalary(double salary) {
@@ -99,7 +110,7 @@ private JobsDto jobsDto;
     }
 
     public int getManager_id() {
-        return this.manager_id;
+        return manager_id;
     }
 
     public void setManager_id(int manager_id) {
@@ -107,19 +118,11 @@ private JobsDto jobsDto;
     }
 
     public int getDepartment_id() {
-        return this.department_id;
+        return department_id;
     }
 
     public void setDepartment_id(int department_id) {
         this.department_id = department_id;
-    }
-
-    public JobsDto getJobsDto() {
-        return jobsDto;
-    }
-
-    public void setJobsDto(JobsDto jobsDto) {
-        this.jobsDto = jobsDto;
     }
 
     @Override
@@ -135,7 +138,14 @@ private JobsDto jobsDto;
                 ", salary=" + salary +
                 ", manager_id=" + manager_id +
                 ", department_id=" + department_id +
-                ", jobsDto=" + jobsDto +
+                ", job=" + jobId +
                 '}';
+    }
+
+    public void addLink(String url, String rel) {
+        LinkDto link = new LinkDto();
+        link.setLink(url);
+        link.setRel(rel);
+        links.add(link);
     }
 }

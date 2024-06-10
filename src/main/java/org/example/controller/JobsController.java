@@ -1,5 +1,6 @@
 package org.example.controller;
 
+
 import jakarta.ws.rs.core.*;
 import org.example.dto.JobFilterDto;
 import org.example.dao.JobsDAO;
@@ -28,7 +29,7 @@ public class JobsController {
             @BeanParam JobFilterDto filter
     ) {
 
-         try {
+        try {
             GenericEntity<ArrayList<Jobs>> jobs = new GenericEntity<ArrayList<Jobs>>(dao.SELECT_ALL_JOBS(filter.getMin_salary())) {};
             if(headers.getAcceptableMediaTypes().contains(MediaType.valueOf(MediaType.APPLICATION_XML))) {
                 return Response
@@ -43,12 +44,12 @@ public class JobsController {
                         .build();
             }
             return Response
-                     .ok(jobs, MediaType.APPLICATION_JSON)
-                     .build();
+                    .ok(jobs, MediaType.APPLICATION_JSON)
+                    .build();
 
-         } catch (Exception e) {
-             throw new RuntimeException(e);
-         }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 //    @GET
@@ -72,12 +73,12 @@ public class JobsController {
 
                 throw new DataNotFoundException("jobs " + job_id + "Not found");
             }
-                    //headers.getAcceptableMediaTypes().contains(MediaType.valueOf(MediaType.APPLICATION_XML) {
+            //headers.getAcceptableMediaTypes().contains(MediaType.valueOf(MediaType.APPLICATION_XML) {
 
             JobsDto dto = JobMapper.INSTANCE.toDeptDto(job);
             addLinks(dto);
 
-             return Response.ok(dto).build();
+            return Response.ok(dto).build();
             /* return Response
                     .ok(dto)
                     .type(MediaType.APPLICATION_JSON)
@@ -114,11 +115,11 @@ public class JobsController {
     public Response INSERT_JOB(Jobs job) {
 
         try {
-             dao.insertJob(job);
-             return Response
-                     .ok(job)
-                     .status(Response.Status.CREATED)
-                     .build();
+            dao.insertJob(job);
+            return Response
+                    .ok(job)
+                    .status(Response.Status.CREATED)
+                    .build();
 
         } catch (Exception e) {
             throw new RuntimeException(e);
