@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class JobsDAO {
 
 
-    private static final String URL = "jdbc:sqlite:C:\\Users\\dev\\Desktop\\ExDay9\\src\\main\\java\\org\\example\\hr.db";
+    private static final String URL = "jdbc:sqlite:C:\\Users\\dev\\Desktop\\ExDay10\\src\\main\\java\\org\\example\\hr.db";
     private  static final String SELECT_ALL_JOBS = "select * from jobs";
     private static final String SELECT_ONE_JOBS = "select * from jobs where job_id = ?";
     private static final String SELECT_JOB_WITH_MIN_SALARY_PAGINATION = "select * from jobs where min_salary = ?";
