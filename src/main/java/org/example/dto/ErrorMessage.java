@@ -1,6 +1,6 @@
 package org.example.dto;
 
-public class ErrorMessage {
+public class  ErrorMessage {
 
     private String errorContent;
     private int errorCode;

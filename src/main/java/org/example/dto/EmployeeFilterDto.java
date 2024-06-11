@@ -3,7 +3,7 @@ package org.example.dto;
 
 import jakarta.ws.rs.QueryParam;
 
-public class EmployeeFilterDto {
+public class  EmployeeFilterDto {
 
     private @QueryParam("job_id") Integer job_id;
     private @QueryParam("hireYear") String hireYear;

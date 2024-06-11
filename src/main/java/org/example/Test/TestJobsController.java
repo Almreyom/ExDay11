@@ -16,7 +16,7 @@ import java.net.URI;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class TestJobsController {
+public class  TestJobsController {
     @InjectMocks
     JobsController jobController;
     @Mock
